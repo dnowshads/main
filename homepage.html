@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Banking Sector</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <link rel="stylesheet" href="home.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  
+  <style type="text/css">
+    
+mark 
+{
+  
+  font-weight: 20px;
+  font-style: italic;
+   color: green;
+}
+  </style>
+   <style>
+    .list {
+      display: none;
+    }
+  </style>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+
+    canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
+    }
+  </style>
+  <style>
+    /* Add animation classes */
+    .list {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  
+    /* Animate the list on hover */
+    .col-sm-4:hover .list {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  
+    /* Animate the list items */
+    .list li {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+    }
+  
+    /* Animate the list items on hover */
+    .col-sm-4:hover .list li {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
+  
+ 
+</head>
+<body > 
+  <canvas id="backgroundCanvas"></canvas>
+  <script>
+ // Background Animation
+ const canvas = document.getElementById("backgroundCanvas");
+    const ctx = canvas.getContext("2d");
+
+    let width, height;
+    let nsLetters = [];
+
+    function resizeCanvas() {
+      width = window.innerWidth;
+      height = window.innerHeight;
+      canvas.width = width;
+      canvas.height = height;
+    }
+
+    function NSLetter(x, y, size, speed) {
+      this.x = x;
+      this.y = y;
+      this.size = size;
+      this.speed = speed;
+
+      this.update = function() {
+        this.x += this.speed;
+
+        if (this.x > width + this.size) {
+          this.x = -this.size;
+        }
+
+        this.draw();
+      }
+
+      this.draw = function() {
+        ctx.font = this.size + "px Arial";
+        ctx.fillStyle = "#007BFF";
+        ctx.fillText("NS", this.x, this.y);
+      }
+    }
+
+    function createNSLetters() {
+      nsLetters = [];
+
+      for (let i = 0; i < 50; i++) {
+        const x = Math.random() * width;
+        const y = Math.random() * height;
+        const size = Math.random() * 40 + 20;
+        const speed = Math.random() * 2 + 1;
+
+        nsLetters.push(new NSLetter(x, y, size, speed));
+      }
+    }
+
+    function drawBackground() {
+      ctx.clearRect(0, 0, width, height);
+
+      // Background color
+      ctx.fillStyle = "#F8F8F8";
+      ctx.fillRect(0, 0, width, height);
+
+      // Draw NS letters
+      for (let i = 0; i < nsLetters.length; i++) {
+        nsLetters[i].update();
+      }
+
+      requestAnimationFrame(drawBackground);
+    }
+
+    window.addEventListener("resize", function() {
+      resizeCanvas();
+      createNSLetters();
+    });
+
+    resizeCanvas();
+    createNSLetters();
+    drawBackground();
+     </script>
+    <p style="text-align: center ;color: aqua;  font-size: 50px;" > Business Bank</p> 
+   
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4">
+      <h2 style="color: red; text-align: left;">Transfer</h2>
+      <ul class="list">
+        <li>RTGS Transfer</li>
+        <li>Nps Transfer</li>
+        <li>Normal Transfer</li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <h2 style="color: red; text-align: center;">Credit</h2>
+      <ul class="list">
+        <li>Credit Card Services</li>
+        <li>Apply For Creditcard</li>
+        <li>Loss Or Report Creditcard</li>
+      </ul>
+    </div>
+    <div class="col-sm-4">
+      <h2 style="color: red; text-align: right;">Admin</h2>
+      <ul class="list">
+        <li>Login As Admin</li>
+        <li>Request</li>
+        <li>DBA</li>
+      </ul>
+    </div>
+  </div>
+</div>
+    
+  
+ 
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+pqhvvo" crossorigin="anonymous"></script>
+
+    <form style="text-align: center;font-size: medium; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;" action="download.jpg" >
+        <div class="form-group">
+            <label for="email">Email address or User ID</label>
+            <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email or User Id">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+          </div>
+        <div class="form-group">
+        <label for="email">Password</label>
+        <input type="password" class="form-control" id="password" aria-describedby="password" placeholder="Enter Password">
+        <small id="Password" class="form-text text-muted">We'll never share your email with anyone else.</small>
+      </div>
+      <div class="form-group form-check">
+        <input type="checkbox" class="form-check-input" id="remember">
+        <label class="form-check-label" for="remember">Remember me</label>
+      </div>
+      <button type="submit" class="btn btn-primary btn-block">Login</button>
+      <p ><a  href="support.html"> <b>Support</b></a></p>  <p><a href="about.html"><b> About</b></a></p><p><a href="contact.html"><b> Contact</b></a></p>
+      <p style="text-align: center;"><mark>Dont Forget To Rate Our Page</mark></p>
+      <article>
+        <p>Rich Internet applications (RIAs) offer a rich, engaging experience that improves user satisfaction and increases productivity. </p>
+        <p>Using the broad reach of the Internet, RIAs can be deployed across browsers and desktops.</p>
+        </article>
+        <footer>
+         &copy 2012 RIA Internet Apps &reg
+        </footer>      
+      </form>
+</body>
+</html>

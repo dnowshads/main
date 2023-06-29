@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    function compareStudents(a, b) {
+  // Compare total marks
+  if (a["chemistry marks"] + a["biology marks"] > b["chemistry marks"] + b["biology marks"]) {
+    return -1; // a should come before b
+  } else if (a["chemistry marks"] + a["biology marks"] < b["chemistry marks"] + b["biology marks"]) {
+    return 1; // b should come before a
+  }
+
+  // Compare biology marks
+  if (a["biology marks"] > b["biology marks"]) {
+    return -1; // a should come before b
+  } else if (a["biology marks"] < b["biology marks"]) {
+    return 1; // b should come before a
+  }
+
+  // Compare date of birth (assuming the date is in "DD-MM-YYYY" format)
+  const aDateParts = a["date of birth"].split("-");
+  const bDateParts = b["date of birth"].split("-");
+
+  const aDate = new Date(aDateParts[2], aDateParts[1] - 1, aDateParts[0]);
+  const bDate = new Date(bDateParts[2], bDateParts[1] - 1, bDateParts[0]);
+
+  if (aDate < bDate) {
+    return -1; // a should come before b
+  } else if (aDate > bDate) {
+    return 1; // b should come before a
+  }
+
+  return 0; // same order (any order between them is acceptable)
+}
+
+// Test data
+const students = [
+  {
+    name: "John",
+    "chemistry marks": 80,
+    "biology marks": 85,
+    "date of birth": "15-04-2000"
+  },
+  {
+    name: "Alice",
+    "chemistry marks": 75,
+    "biology marks": 90,
+    "date of birth": "10-03-2000"
+  },
+  {
+    name: "Bob",
+    "chemistry marks": 80,
+    "biology marks": 90,
+    "date of birth": "15-04-2000"
+  },
+];
+
+// Sort the array of students
+students.sort(compareStudents);
+
+// Output the sorted array
+console.log(students);
+
+  </script>
+</body>
+</html>
